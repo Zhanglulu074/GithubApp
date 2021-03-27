@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="userItem"
+            type="com.example.githubapplication.network.model.UserItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_marginVertical="2dp"
+        android:layout_marginHorizontal="7dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/user_avatar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            iconUri="@{userItem.userAvatarUrl}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/user_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ff000000"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="@{userItem.userName}"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/user_avatar"
+            app:layout_constraintStart_toEndOf="@+id/user_avatar"
+            app:layout_constraintTop_toTopOf="@+id/user_avatar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
