@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">GithubApplication</string>
+
+    <string-array name="search_mode_array">
+        <item>Repository</item>
+        <item>User</item>
+    </string-array>
 </resources>

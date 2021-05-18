@@ -1,5 +1,6 @@
 package com.example.githubapplication.network
 
+import com.example.githubapplication.network.model.RepoItem
 import com.example.githubapplication.network.model.RepoSearchResponse
 import com.example.githubapplication.network.model.UserSearchResponse
 import io.reactivex.Single

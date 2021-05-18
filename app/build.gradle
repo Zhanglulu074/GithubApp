@@ -69,5 +69,7 @@ dependencies {
     // optional - RxJava support
     implementation "androidx.paging:paging-rxjava2:$paging_version"
 
+    implementation 'androidx.cardview:cardview:1.0.0'
+
 
 }

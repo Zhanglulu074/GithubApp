@@ -18,6 +18,9 @@ class RepoItem(
     var repoName: String,
     @SerializedName("language")
     var repoLanguage: String,
+    var description: String,
+    @SerializedName("forks_count")
+    var forkCount: String,
     @SerializedName("stargazers_count")
     var startCount: String,
     @SerializedName("size")

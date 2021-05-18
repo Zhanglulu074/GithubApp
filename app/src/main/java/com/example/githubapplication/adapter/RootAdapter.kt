@@ -30,8 +30,8 @@ public abstract class RootAdapter<T, VH : ViewHolder> :
     public var footView: View? = null
     var footerListener: ScrollToFooterListener? = null
 
-    constructor(ctx: Context, itemList: ObservableList<T>): super() {
-        mObjects = itemList
+    constructor(ctx: Context): super() {
+        mObjects = ObservableArrayList<T>()
         context = ctx
         mObjects?.addOnListChangedCallback(object :
             ObservableList.OnListChangedCallback<ObservableList<T>>() {
@@ -76,6 +76,7 @@ public abstract class RootAdapter<T, VH : ViewHolder> :
 
     fun clear() {
         mObjects?.clear()
+        notifyDataSetChanged()
     }
 
     fun add(item: T) {
@@ -105,18 +106,19 @@ public abstract class RootAdapter<T, VH : ViewHolder> :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         Log.d("zll", "onBindViewHolder: ${position}")
         if (holder is FootViewHolder) {
-            footerListener?.onScrollToFooter()
+            if (position != 0) {
+                footerListener?.onScrollToFooter()
+            }
         } else {
             onBindViewHolder(holder as VH, mObjects?.get(position))
         }
     }
 
-    protected abstract fun onBindViewHolder(holder: VH, position: T?)
+    protected abstract fun onBindViewHolder(holder: VH, item: T?)
 
     protected abstract fun onCreateOwnViewHolder(parent: ViewGroup, viewType: Int): VH
 
     override fun getItemViewType(position: Int): Int {
-        Log.d("MainActivity", "getItemViewType: $position ${(mObjects?.size?:0) - 1}")
         return if (position == (mObjects?.size?:0)) {
             FOOT_VIEW_TYPE
         } else {

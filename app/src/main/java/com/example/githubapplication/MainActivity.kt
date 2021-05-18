@@ -2,6 +2,7 @@ package com.example.githubapplication
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -67,6 +68,6 @@ fun Disposable.addTo(co: CompositeDisposable) {
     co.add(this)
 }
 
-fun <T> Single<T>.doInBackground(): Single<T> {
+public fun <T> Single<T>.doInBackground(): Single<T> {
     return this.subscribeOn(Schedulers.io())
 }

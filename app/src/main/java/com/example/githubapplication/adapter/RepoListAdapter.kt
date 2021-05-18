@@ -13,8 +13,8 @@ import com.example.githubapplication.databinding.UserItemBinding
 import com.example.githubapplication.network.model.RepoItem
 import com.example.githubapplication.network.model.UserItem
 
-class RepoListAdapter(ctx: Context, itemList: ObservableList<RepoItem>) :
-    RootAdapter<RepoItem, RepoListAdapter.RepoItemViewHolder>(ctx, itemList) {
+class RepoListAdapter(ctx: Context) :
+    RootAdapter<RepoItem, RepoListAdapter.RepoItemViewHolder>(ctx) {
     init {
         footerListener = object : ScrollToFooterListener {
             override fun onScrollToFooter() {
@@ -23,14 +23,14 @@ class RepoListAdapter(ctx: Context, itemList: ObservableList<RepoItem>) :
         }
     }
 
-    override fun onBindViewHolder(holder: RepoItemViewHolder, position: RepoItem?) {
+    public override fun onBindViewHolder(holder: RepoItemViewHolder, position: RepoItem?) {
         holder.itemBind.repoItem = position
     }
 
 
     override fun onCreateOwnViewHolder(parent: ViewGroup, viewType: Int): RepoItemViewHolder {
         val itemBind: RepoItemBinding = DataBindingUtil.inflate(
-            LayoutInflater.from(context), R.layout.user_item, parent, false)
+            LayoutInflater.from(context), R.layout.repo_item, parent, false)
         return RepoItemViewHolder(itemBind)
     }
 
